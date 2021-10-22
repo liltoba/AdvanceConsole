@@ -246,6 +246,7 @@ var result = TableCreator.CreateTable(tempList, OutputType.Default, true);
 ```
 
 # And the result looks like this:
+```
 +-----+----+------------+-------------+-------------------------------+--------+------------+
 | Row | Id | First name | Last name   | E-Mail                        | Gender | Birthday   |
 +-----+----+------------+-------------+-------------------------------+--------+------------+
@@ -260,4 +261,6 @@ var result = TableCreator.CreateTable(tempList, OutputType.Default, true);
 |   9 |  9 | Nevins     | Stear       | nstear8@aboutads.info         | Male   | 1951-04-05 |
 |  10 | 10 | Yolane     | Wadman      | ywadman9@stanford.edu         | Female | 1962-05-28 |
 +-----+----+------------+-------------+-------------------------------+--------+------------+
+
+```
 
