@@ -264,3 +264,145 @@ var result = TableCreator.CreateTable(tempList, OutputType.Default, true);
 
 ```
 
+# Simple input
+
+```csharp
+var name = Prompt.Input<string>("What's your name?");
+Console.WriteLine($"Hello, {name}!");
+```
+
+# Password
+
+```csharp
+var secret = Prompt.Password("Type new password", new[] { Validators.Required(), Validators.MinLength(8) });
+Console.WriteLine("Password OK");
+```
+
+# Confirmation
+
+```csharp
+var answer = Prompt.Confirm("Are you ready?");
+Console.WriteLine($"Your answer is {answer}");
+```
+
+# Input
+
+```csharp
+var name = Prompt.Input<string>("What's your name?");
+Console.WriteLine($"Hello, {name}!");
+
+var number = Prompt.Input<int>("Enter any number");
+Console.WriteLine($"Input = {number}");
+```
+
+# Select
+
+```csharp
+var city = Prompt.Select("Select your city", new[] { "Seattle", "London", "Tokyo" });
+Console.WriteLine($"Hello, {city}!");
+```
+
+# Enum support
+
+```csharp
+var value = Prompt.Select<MyEnum>("Select enum value");
+Console.WriteLine($"You selected {value}");
+```
+
+# MultiSelect (Checkbox)
+
+```csharp
+var cities = Prompt.MultiSelect("Which cities would you like to visit?", new[] { "Seattle", "London", "Tokyo", "New York", "Singapore", "Shanghai" }, pageSize: 3);
+Console.WriteLine($"You picked {string.Join(", ", cities)}");
+```
+
+# List
+
+```csharp
+var value = Prompt.List<string>("Please add item(s)");
+Console.WriteLine($"You picked {string.Join(", ", value)}");
+```
+
+# AutoForms (Preview)
+
+```csharp
+// Input model definition
+public class MyFormModel
+{
+    [Display(Prompt = "What's your name?")]
+    [Required]
+    public string Name { get; set; }
+
+    [Display(Prompt = "Type new password")]
+    [DataType(DataType.Password)]
+    [Required]
+    [MinLength(8)]
+    public string Password { get; set; }
+
+    [Display(Prompt = "Are you ready?")]
+    public bool Ready { get; set; }
+}
+
+var result = Prompt.AutoForms<MyFormModel>();
+```
+
+# Symbols
+
+```csharp
+Prompt.Symbols.Prompt = new Symbol("🤔", "?");
+Prompt.Symbols.Done = new Symbol("😎", "V");
+Prompt.Symbols.Error = new Symbol("😱", ">>");
+
+var name = Prompt.Input<string>("What's your name?");
+Console.WriteLine($"Hello, {name}!");
+```
+
+# Color schema
+
+```csharp
+Prompt.ColorSchema.Answer = ConsoleColor.DarkRed;
+Prompt.ColorSchema.Select = ConsoleColor.DarkCyan;
+
+var name = Prompt.Input<string>("What's your name?");
+Console.WriteLine($"Hello, {name}!");
+```
+
+# Unicode support
+
+```csharp
+// Prefer UTF-8 as the output encoding
+Console.OutputEncoding = Encoding.UTF8;
+
+var name = Prompt.Input<string>("What's your name?");
+Console.WriteLine($"Hello, {name}!");
+```
+
+# Cancellation support
+
+```csharp
+// Throw an exception when canceling with Ctrl-C
+Prompt.ThrowExceptionOnCancel = true;
+
+try
+{
+    var name = Prompt.Input<string>("What's your name?");
+    Console.WriteLine($"Hello, {name}!");
+}
+catch (PromptCanceledException ex)
+{
+    Console.WriteLine("Prompt canceled");
+}
+```
+
+# Supported platforms
+
+```
+◾️Windows
+◾️Command Prompt
+◾️PowerShell
+◾️Windows Terminal
+◾️Linux (Ubuntu, etc)
+◾️Windows Terminal (WSL 2)
+◾️macOS
+◾️Terminal.app
+```
