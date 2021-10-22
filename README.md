@@ -26,8 +26,6 @@ Console.WriteLine("console in default");
 ```
 
 
-![Screenshot 2021-10-01 201303](https://raw.githubusercontent.com/tomakita/Colorful.Console/master/static/basic_x.png)
-
 
 
 # Write With Full System.Drawing.Color Support
@@ -44,8 +42,6 @@ for (int i = 0; i < 10; i++)
     b -= 9;
 }
 ```
-
-![Screenshot 2021-10-01 201303](https://raw.githubusercontent.com/tomakita/Colorful.Console/master/static/rgb_x.png)
 
 
 # Format Text Using Two Colors
